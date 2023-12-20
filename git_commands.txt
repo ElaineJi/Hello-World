@@ -1,0 +1,68 @@
+
+# git init: initialize a new git repo
+git init
+
+# git clone
+git clone [github_url]
+git checkout [branch_name]
+
+# git branch 
+git branch --list #list all existing branch and show current branch
+git branch [new_branch] #create a new branch
+
+# git checkout: navigate to different branches
+git checkout [new_branch] #go to new branch
+git checkout -b [new_branch] #create and go to new branch
+
+# git add: move changes to staging area. Track files
+# need to do it before commit
+git add .  # stage all files
+git add [file_name]
+
+# git commit: take the staged files and commit them
+git commit -m "descriptions of this commit"
+git commit -am "description of this commit for all files including unstated files"
+
+# git log
+git log
+git log --graph
+
+# git merge: merge branch develop to master
+git checkout master
+git merge develop
+
+# git remote: connect to remote GitHub repo
+git remote add origin [github_url]
+git remote
+git remote rename [old_name] [new_name]
+
+
+# git push: push master branch from local to remote repo
+git push origin master
+> username: ElaineJi
+> token: personal access token
+
+## run it once with -u and you no longer need to specify origin and master branch in the future
+git push -u origin master  
+git push
+
+
+# git status: check status of files
+git status
+
+# git diff: check detail changes in files
+git diff
+
+# git stash: store unfinished (with uncommitted edited files) edits
+git stash
+git stash apply # restore the saved edits
+
+# git reset: undo changes
+git reset head~ --soft # undo last commit, keep the git add status and the edits
+
+
+
+
+
+
+
