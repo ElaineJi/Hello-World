@@ -1,0 +1,106 @@
+# How to install a virtual environment
+
+# 1. Venv
+
+# install venv
+pip install virtualenv
+
+# create a virtual environment
+# python<version> -m venv <virtual-environment-name>
+python3.9 -m venv env
+
+# activate virtual environment
+Source env/bin/activate
+
+# check the list of packages installed in virtual env
+pip list
+
+# install libraries in virtual environment
+pip install xxx
+
+# generate a text file listing all project dependencies
+pip freeze > requirements.txt
+
+# install all dependencies with a requirements.txt file
+pip install -r requirements.txt
+
+# deactivate a virtual environment
+deactivate
+
+
+
+
+# 2. Conda
+# https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#creating-an-environment-from-an-environment-yml-file
+
+# create a virtual environment
+conda create --name myenv
+# This creates the myenv environment in /envs/. No packages will be installed in this environment.
+
+# to create an environment with a specific version of python and multiple packages
+conda create -n myenv python=3.9 pandas=2.1.4 numpy=1.26.2
+conda install -n myenv scipy=0.17.3
+# tip: Install all the programs that you want in this environment at the same time. Installing 1 program at a time can lead to dependency conflicts.
+
+
+# create an environment from an environment.yml file
+conda env create -f environment.yml
+
+
+# activate and deactivate
+conda activate myenv
+conda deactivate
+
+# list conda environments
+conda env list
+# can also use 
+conda info --envs
+
+
+# sepcify a location for an environment
+conda create --prefix ./envs jupyterlab=3.2 matplotlib=3.5 numpy=1.21
+
+conda activate ./envs
+
+## to remove the long prefix in your shell prompt
+conda config --set env_prompt '({name})'
+
+
+# view a list of packages in an environment
+## if the environment is not activated
+conda list -n myenv
+## if the environment is activated
+conda list
+conda list pandas 
+
+
+# use pip in an environment
+pip install xxx
+# tips: use pip only after conda. To install additional	conda packages, it's best to recreate the environment
+
+
+# set environment variables
+## list variables you have
+conda env config vars list
+## set environment variables
+conda env config vars set my_var=value
+## once you have set an environment variable, you have to reactivate your environment
+conda activate myenv
+## check variable
+echo $my_var
+## unset variable
+conda env config vars unset my_var -n myenv
+
+
+# export environment.yml file
+conda env export
+conda env export > environment.yml
+
+
+# remove an environment
+conda remove --name myenv --all
+# or
+conda env remove --name myenv
+
+
+
